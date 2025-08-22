@@ -12,12 +12,38 @@ CSV_FILE = "/data/followers.csv"
 # Initialize Dash app
 app = dash.Dash(__name__)
 app.title = "Instagram Followers Tracker"
+app.index_string = """
+<!DOCTYPE html>
+<html>
+    <head>
+        {%metas%}
+        <title>{%title%}</title>
+        {%favicon%}
+        {%css%}
+        <style>
+            body {
+                background-color: #000; /* make entire page black */
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+    <body>
+        {%app_entry%}
+        <footer>
+            {%config%}
+            {%scripts%}
+            {%renderer%}
+        </footer>
+    </body>
+</html>
+"""
 
 # App layout
 app.layout = html.Div(
-    style={"font-family": "Arial, sans-serif", "text-align": "center", "padding": "20px"},
+    style={"font-family": "Arial, sans-serif", "text-align": "center", "background-color": "#000", "padding": "20px"},
     children=[
-        html.H1("Instagram Followers Over Time", style={"color": "#333"}),
+        html.H1("🧚📈 ", style={"color": "#aaa"}),
         dcc.Graph(id="followers-graph"),
         dcc.Interval(
             id="interval-component",
@@ -61,7 +87,7 @@ def update_graph(n):
         yaxis=dict(showgrid=True, gridcolor="#444"),
         plot_bgcolor="#111",
         paper_bgcolor="#111",
-        font=dict(color="#fff")
+        font=dict(color="#aaa")
     )
     return fig
 
