@@ -12,6 +12,7 @@ Install docker and docker compose.
 
 Create a file "worker/username.txt" with the username of the account you want to observe.
 
-Run: `docker compose up -d --build`
+Run: 
+`docker compose up -d --build`
 
-This should build the images and run them.
+This builds the images and runs them.
